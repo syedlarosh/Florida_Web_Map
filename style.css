@@ -1,0 +1,487 @@
+/* =====================================================
+   GLOBAL & TYPOGRAPHY
+   ===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow: hidden;
+    background-color: #f1f5f9;
+    color: #1e293b;
+}
+
+/* =====================================================
+   PASSWORD OVERLAY
+   ===================================================== */
+#passwordOverlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.password-box {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 90%;
+    max-width: 420px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lock-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.password-box h2 {
+    color: #0f172a;
+    margin-bottom: 8px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.password-box p {
+    color: #64748b;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.input-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.password-box input[type="password"],
+.password-box input[type="text"] {
+    width: 100%;
+    padding: 14px 45px 14px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.2s;
+    background: #f8fafc;
+}
+
+.password-box input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.eye-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #94a3b8;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.eye-btn:hover {
+    color: #3b82f6;
+}
+
+.remember-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #475569;
+}
+
+.remember-row input {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    accent-color: #3b82f6;
+}
+
+.remember-row label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.password-box button#passwordSubmit {
+    width: 100%;
+    padding: 14px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.password-box button#passwordSubmit:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+.error-text {
+    color: #ef4444;
+    font-size: 13px;
+    margin-top: 15px;
+    min-height: 20px;
+    font-weight: 500;
+}
+
+/* =====================================================
+   MAIN DASHBOARD & FLOATING PANEL
+   ===================================================== */
+#viewDiv {
+    position: absolute;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 1;
+}
+
+.floating-panel {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 360px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 100px); 
+    overflow: hidden;
+}
+
+.panel-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e2e8f0;
+    background: #ffffff;
+}
+
+.panel-header-brand h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+}
+
+/* SEARCH SECTION */
+.search-panel {
+    padding: 20px 24px;
+    border-bottom: 1px solid #e2e8f0;
+    background: #ffffff;
+}
+
+.search-tabs {
+    display: flex;
+    gap: 4px;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+
+.search-tab {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.search-tab:hover {
+    color: #0f172a;
+}
+
+.search-tab.active {
+    background: #ffffff;
+    color: #2563eb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.search-body.hidden {
+    display: none;
+}
+
+.input-group {
+    display: flex;
+    gap: 8px;
+}
+
+.input-group input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s;
+    background: #f8fafc;
+}
+
+.input-group input:focus {
+    border-color: #3b82f6;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.primary-btn {
+    padding: 0 20px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.primary-btn:hover {
+    background: #1d4ed8;
+}
+
+.search-status {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 20px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.search-status.ok { color: #10b981; }
+.search-status.err { color: #ef4444; }
+
+/* LAYERS SECTION */
+.layers-section {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.layers-header {
+    padding: 16px 24px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.layers-header h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge {
+    background: #eff6ff;
+    color: #2563eb;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.panel-tools {
+    padding: 0 24px 12px;
+    position: relative;
+}
+
+.panel-tools svg {
+    position: absolute;
+    left: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.panel-tools input {
+    width: 100%;
+    padding: 10px 12px 10px 36px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    background: #f8fafc;
+    transition: all 0.2s;
+}
+
+.panel-tools input:focus {
+    border-color: #3b82f6;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.layers-list {
+    overflow-y: auto;
+    padding-bottom: 16px;
+}
+
+.layers-list::-webkit-scrollbar {
+    width: 6px;
+}
+.layers-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+.layers-list::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.layer-item {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.layer-row {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 24px;
+    transition: background 0.2s;
+}
+
+.layer-row:hover {
+    background: #f8fafc;
+}
+
+.layer-row input[type="checkbox"] {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    accent-color: #2563eb;
+}
+
+.layer-name {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 500;
+    color: #334155;
+    overflow-wrap: anywhere;
+}
+
+.loading {
+    padding: 20px 24px;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+.error-box {
+    padding: 16px 24px;
+    color: #ef4444;
+    font-size: 13px;
+    line-height: 1.5;
+    background: #fef2f2;
+    margin: 16px;
+    border-radius: 8px;
+    border: 1px solid #fecaca;
+}
+
+/* Make Esri UI widgets match our modern theme */
+.esri-ui-corner .esri-component {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 8px !important;
+}
+
+/* =====================================================
+   CUSTOM LEGEND BAR (Niche wala)
+   ===================================================== */
+#customLegend {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #1e3a8a; /* Dark Blue background */
+    color: white;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    padding: 8px 10px;
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.legend-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+}
+
+.legend-group {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
+    gap: 12px;
+}
+
+.legend-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: #93c5fd;
+}
+
+.legend-items {
+    display: flex;
+    gap: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.color-box {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    border: 1px solid white;
+    display: inline-block;
+}
+
+/* Adjust zoom & home controls so they don't overlap the legend */
+.esri-ui-bottom-right {
+    bottom: 55px !important; 
+}
